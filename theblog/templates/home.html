@@ -23,7 +23,7 @@
 	{% endif %}
 	
 	<br/>
-	{{ post.body|slice:":10" }}</li>
+	{{ post.body|slice:":50"|safe }}</li>
 {% endfor %}
 </ul>
 
