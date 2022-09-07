@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if region_posts %}    
+
+	<h1>{{ regs }}</h1>
+
+	<ul>
+	{% for region in region_posts %}
+		<li><a href="{% url 'article-detail' region.pk %}">{{ region.title }}</a> 
+
+			
+			- {{ post.author.first_name }} {{ post.author.last_name }} -  
+			{{ post.post_date }} <small>
+
+			{% if user.is_authenticated %}	
+				- <a href="{% url 'update_post' region.pk %}">(Edit)</a> 
+
+				<a href="{% url 'delete_post' region.pk %}">(Delete)</a>
+			{% endif %}
+
+		</small> <br/>
+		{{ region.body|slice:":50"|safe }}</li>
+	{% endfor %}
+	</ul>
+
+{% else %}
+	<h2>Sorry this page does not exist...</h2>
+{% endif %}
+
+{% endblock %}

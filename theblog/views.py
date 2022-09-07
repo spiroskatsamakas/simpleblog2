@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from .models import Post, Category
+from .models import Post, Category, Region
 from .forms import PostForm, EditForm
 from django.urls import reverse_lazy
 
@@ -24,6 +24,10 @@ class HomeView(ListView):
 def CategoryView(request, cats):
 	category_posts = Post.objects.filter(category=cats.replace('-', ' '))
 	return render(request, 'categories.html', {'cats':cats.replace('-', ' ').title(), 'category_posts':category_posts})
+    
+def RegionView(request, regs):
+	region_posts = Post.objects.filter(region=regs.replace('-', ' '))
+	return render(request, 'regions.html', {'regs':regs.replace('-', ' ').title(), 'region_posts':region_posts})
 
 class ArticleDetailView(DetailView):
 	model = Post
@@ -40,6 +44,13 @@ class AddCategoryView(CreateView):
 	model = Category
 	#form_class = PostForm
 	template_name = 'add_category.html'
+	fields = '__all__'
+	#fields = ('title', 'body')
+    
+class AddRegionView(CreateView):
+	model = Region
+	#form_class = PostForm
+	template_name = 'add_region.html'
 	fields = '__all__'
 	#fields = ('title', 'body')
     
