@@ -17,12 +17,21 @@ class HomeView(ListView):
     
     def get_context_data(self, *args, **kwargs):
         cat_menu = Category.objects.all()
+        reg_menu = Region.objects.all()
         context = super(HomeView, self).get_context_data(*args, **kwargs)
         context["cat_menu"] = cat_menu
+        context["reg_menu"] = reg_menu
         return context
 
+    
+    #def get_context_data(self, *args, **kwargs):
+        #reg_menu = Region.objects.all()
+        #context = super(HomeView, self).get_context_data(*args, **kwargs)
+        #context["reg_menu"] = reg_menu
+        #return context
+
 def CategoryView(request, cats):
-	category_posts = Post.objects.filter(category=cats.replace('-', ' '))
+	category_posts = Post.objects.filter(category=cats)
 	return render(request, 'categories.html', {'cats':cats.replace('-', ' ').title(), 'category_posts':category_posts})
     
 def RegionView(request, regs):

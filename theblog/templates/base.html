@@ -46,8 +46,32 @@
 		
 		  <!-- ΑΠΕΝΕΡΓΟΠΟΙΗΣΗ html
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>-->
+          <a class="dropdown-item" href="#">Something else here</a>-->
+        </div>
+      </li>	
+
+		 {% endif %}
+		 
+		<!-- Region Menu Code -->
+		
+		{% if reg_menu %}
+		
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Regions
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+		
+		
+		{% for item in reg_menu %}
+		 <a class="dropdown-item" href="{% url 'region' item %}">{{ item }}</a>
+		{% endfor %}
+		
+		
+		  <!-- ΑΠΕΝΕΡΓΟΠΟΙΗΣΗ html
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>-->
+        </div>
       </li>	
 
 		 {% endif %}
