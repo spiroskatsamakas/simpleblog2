@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from .models import Post, Category, Region
+from .models import Post, Category, Region, Cultivation
 from .forms import PostForm, EditForm
 from django.urls import reverse_lazy
 
@@ -62,7 +62,14 @@ class AddRegionView(CreateView):
 	template_name = 'add_region.html'
 	fields = '__all__'
 	#fields = ('title', 'body')
-    
+
+class AddCultivationView(CreateView):
+	model = Cultivation
+	#form_class = PostForm
+	template_name = 'add_cultivation.html'
+	fields = '__all__'
+	#fields = ('title', 'body')
+   
 class UpdatePostView(UpdateView):
 	model = Post
 	form_class = EditForm
