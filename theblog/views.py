@@ -38,6 +38,10 @@ def RegionView(request, regs):
 	region_posts = Post.objects.filter(region=regs.replace('-', ' '))
 	return render(request, 'regions.html', {'regs':regs.replace('-', ' ').title(), 'region_posts':region_posts})
 
+def CultivationView(request, cults):
+	cultivation_posts = Post.objects.filter(cultivation=cults)
+	return render(request, 'cultivations.html', {'cults':cults.replace('-', ' ').title(), 'cultivation_posts':cultivation_posts})
+    
 class ArticleDetailView(DetailView):
 	model = Post
 	template_name = 'article_details.html'

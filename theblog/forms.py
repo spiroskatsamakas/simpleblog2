@@ -38,7 +38,7 @@ class PostForm(forms.ModelForm):
                 'author': forms.Select(attrs={'class': 'form-control'}),
                 'category': forms.Select(choices=choice_list, attrs={'class': 'form-control'}),
                 'region': forms.Select(choices=choice_list1, attrs={'class': 'form-control'}),
-                'cultivation': forms.Select(choices=choice_list2, attrs={'class': 'form-control'}),
+                'cultivation': forms.Select(choices=choice_list2 , attrs={'class': 'form-control'}),
                 'body': forms.Textarea(attrs={'class': 'form-control'}),			
                 #'snippet': forms.Textarea(attrs={'class': 'form-control'}),			
             }
