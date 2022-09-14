@@ -18,9 +18,11 @@ class HomeView(ListView):
     def get_context_data(self, *args, **kwargs):
         cat_menu = Category.objects.all()
         reg_menu = Region.objects.all()
+        cult_menu = Cultivation.objects.all()
         context = super(HomeView, self).get_context_data(*args, **kwargs)
         context["cat_menu"] = cat_menu
         context["reg_menu"] = reg_menu
+        context["cult_menu"] = cult_menu
         return context
 
     

@@ -4,7 +4,11 @@
 
 {% block content %}
 <br/>
-<h1>{{ post.title }}</h1>
+<h1>{{ post.title }}</h1>  	
+	
+	<a href="{% url 'category' post.category %}">{{ post.category }}</a> -
+	<a href="{% url 'region' post.region %}">{{ post.region }}</a> -
+	<a href="{% url 'cultivation' post.cultivation %}">{{ post.cultivation }}</a> -	
 <small> By : {{ post.author.first_name }} 
 			 {{ post.author.last_name }} - 
 			 {{ post.post_date }} 

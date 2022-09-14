@@ -8,7 +8,8 @@
 
 	<ul>
 	{% for region in region_posts %}
-		<li><a href="{% url 'article-detail' region.pk %}">{{ region.title }}</a> 
+		<li><a href="{% url 'article-detail' region.pk %}">{{ region.title }}</a>
+			
 
 			
 			- {{ region.author.first_name }} {{ region.author.last_name }} -  

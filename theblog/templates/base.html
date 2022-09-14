@@ -75,6 +75,31 @@
       </li>	
 
 		 {% endif %}
+		 
+		 <!-- Cultivation Menu Code -->
+		
+		{% if cult_menu %}
+		
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Cultivation
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+		
+		
+		{% for item in cult_menu %}
+		 <a class="dropdown-item" href="{% url 'cultivation' item %}">{{ item }}</a>
+		{% endfor %}
+		
+		
+		  <!-- ΑΠΕΝΕΡΓΟΠΟΙΗΣΗ html
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>-->
+        </div>
+      </li>	
+
+		 {% endif %}
+		 
 		
 		{% if user.is_authenticated %}
 		

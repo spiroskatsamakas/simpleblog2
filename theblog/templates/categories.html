@@ -8,7 +8,10 @@
 
 	<ul>
 	{% for post in category_posts %}
-		<li><a href="{% url 'article-detail' post.pk %}">{{ post.title }}</a> 
+		<li><a href="{% url 'article-detail' post.pk %}">{{ post.title }}</a> -
+		<a href="{% url 'category' post.category %}">{{ post.category }}</a> -
+		<a href="{% url 'region' post.region %}">{{ post.region }}</a> -
+		<a href="{% url 'cultivation' post.cultivation %}">{{ post.cultivation }}</a> -	
 
 			
 			- {{ post.author.first_name }} {{ post.author.last_name }} -  
