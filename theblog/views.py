@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from .models import Post, Category, Region, Cultivation
+from .models import Post, Category, Region, Cultivation, Alertlevel
 from .forms import PostForm, EditForm
 from django.urls import reverse_lazy
 
@@ -19,10 +19,12 @@ class HomeView(ListView):
         cat_menu = Category.objects.all()
         reg_menu = Region.objects.all()
         cult_menu = Cultivation.objects.all()
+        alert_menu = Alertlevel.objects.all()
         context = super(HomeView, self).get_context_data(*args, **kwargs)
         context["cat_menu"] = cat_menu
         context["reg_menu"] = reg_menu
         context["cult_menu"] = cult_menu
+        context["alert_menu"] = alert_menu
         return context
 
     
@@ -43,6 +45,11 @@ def RegionView(request, regs):
 def CultivationView(request, cults):
 	cultivation_posts = Post.objects.filter(cultivation=cults)
 	return render(request, 'cultivations.html', {'cults':cults.replace('-', ' ').title(), 'cultivation_posts':cultivation_posts})
+    
+    
+def AlertlevelView(request, alerts):
+	alertlevel_posts = Post.objects.filter(alertlevel=alerts)
+	return render(request, 'alertlevels.html', {'alerts':alerts.replace('-', ' ').title(), 'alertlevel_posts':alertlevel_posts})
     
 class ArticleDetailView(DetailView):
 	model = Post
@@ -73,6 +80,13 @@ class AddCultivationView(CreateView):
 	model = Cultivation
 	#form_class = PostForm
 	template_name = 'add_cultivation.html'
+	fields = '__all__'
+	#fields = ('title', 'body')
+    
+class AddAlertlevelView(CreateView):
+	model = Alertlevel
+	#form_class = PostForm
+	template_name = 'add_alertlevel.html'
 	fields = '__all__'
 	#fields = ('title', 'body')
    

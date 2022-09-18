@@ -94,6 +94,31 @@
 
 		 {% endif %}
 		 
+		 
+		<!-- Alertlevel Menu Code -->
+		
+		{% if alert_menu %}
+		
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Επίπεδα
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+		
+		
+		{% for item in alert_menu %}
+		 <a class="dropdown-item" href="{% url 'alertlevel' item %}">{{ item }}</a>
+		{% endfor %}
+		
+		
+		  <!-- ΑΠΕΝΕΡΓΟΠΟΙΗΣΗ html
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>-->
+        </div>
+      </li>	
+
+		 {% endif %}
+		 
 	  
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -176,6 +201,32 @@
 
 		 {% endif %}
 		 
+		 
+		 
+		<!-- Alertlevel Menu Code -->
+		
+		{% if alert_menu %}
+		
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Επίπεδα
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+		
+		
+		{% for item in alert_menu %}
+		 <a class="dropdown-item" href="{% url 'alertlevel' item %}">{{ item }}</a>
+		{% endfor %}
+		
+		
+		  <!-- ΑΠΕΝΕΡΓΟΠΟΙΗΣΗ html
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>-->
+        </div>
+      </li>	
+
+		 {% endif %}
+		 
 		
 		{% if user.is_authenticated %}
 		
@@ -195,6 +246,10 @@
 			  <a class="nav-link" href="{% url 'add_cultivation'%}">Add Cultivation</a>
 			</li>
 			
+			<li class="nav-item">
+			  <a class="nav-link" href="{% url 'add_alertlevel'%}">Add Alertlevel</a>
+			</li>
+						
 			<li class="nav-item">
 			  <a class="nav-link" href="{% url 'logout'%}">Logout</a>
 			</li>

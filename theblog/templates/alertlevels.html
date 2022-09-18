@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if alertlevel_posts %}    
+
+	<h1>{{ cults }}</h1>
+
+	<ul>
+	{% for alertlevel in alertlevel_posts %}
+		<li><a href="{% url 'article-detail' alertlevel.pk %}">{{ alertlevel.title }}</a> 
+
+			
+			- {{ alertlevel.author.first_name }} {{ alertlevel.author.last_name }} -  
+			{{ alertlevel.post_date }} <small>
+
+			{% if user.is_authenticated %}	
+				- <a href="{% url 'update_post' alertlevel.pk %}">(Edit)</a> 
+
+				<a href="{% url 'delete_post' alertlevel.pk %}">(Delete)</a>
+			{% endif %}
+
+		</small> <br/>
+		{{ alertlevel.body|slice:":50"|safe }}</li>
+	{% endfor %}
+	</ul>
+
+{% else %}
+	<h2>Sorry this page does not exist...</h2>
+{% endif %}
+
+{% endblock %}

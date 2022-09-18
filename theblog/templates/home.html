@@ -14,10 +14,12 @@
 	
 	<a href="{% url 'category' post.category %}">{{ post.category }}</a> -
 	<a href="{% url 'region' post.region %}">{{ post.region }}</a> -
-	<a href="{% url 'cultivation' post.cultivation %}">{{ post.cultivation }}</a> -	
+	<a href="{% url 'cultivation' post.cultivation %}">{{ post.cultivation }}</a> -
+	<a href="{% url 'alertlevel' post.alertlevel %}">{{ post.alertlevel }}</a> -
 	{{ post.author.first_name }}	
 	{{ post.author.last_name }}- 
-	{{ post.post_date }} 
+	<!-- {{ post.post_date }}--->
+	{{ post.post_time }}
 	
 	{% if user.is_authenticated %}
 	
@@ -30,6 +32,9 @@
 	{{ post.snippet }}</li>
 {% endfor %}
 </ul>
+
+
+
 
 <!-- {% for item in cat_menu %}
 	{{ item }}<brs/>
